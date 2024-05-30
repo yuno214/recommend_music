@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECOMMENDATIONS BY MBTI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+</head>
+
+<style>
+ .search {
+    display: flex;
+    align-items: center;
+ }
+ .search input {
+    width: 148px;
+    height: 24px;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px black solid;
+    margin-right: 10px;
+ }
+
+ .search button {
+    font-size: 35px;
+    border: none;
+    background-color: white;
+    padding: 6px 12px;
+    border-radius: 15px;
+    color: black;
+    cursor: pointer;
+ }
+ 
+ * {
+     margin: 0; padding: 0;
+     box-sizing: border-box;
+ }
+ 
+ .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: white; 
+    }
+    
+ body {
+    padding-top: 100px; 
+    }
+ h1 {
+     font-family: 'Orbitron', sans-serif;
+     font-weight: lighter;
+     text-align: center;
+     margin: 0;
+     position: absolute;
+     left: 50%;
+     transform: translateX(-50%);
+ }
+
+ .container {
+     overflow: visible;
+     width: 1080px;
+     margin: 0 auto;
+     margin-bottom: 8px;  
+     display: flex;
+     justify-content: center;
+     text-align: center; 
+ }
+ 
+ .gnb {
+     padding: 8px 0px;
+     display: inline-block;
+     margin-left: 125px;
+     margin-right: 125px;
+     margin-bottom: -1px;
+     text-align: center;
+     position: relative;
+     font-size: 18px;
+     z-index: 9999;
+     list-style-type: none;
+ }
+ .gnb > a {
+     list-style-type: none;
+     margin-left: 10px;
+     line-height: 10px;
+     display: inline-block;
+ }
+ .gnb > a:first-child {
+     padding-left: 10px;
+     padding-right: 10px;
+     margin-left: 40px;
+     display: inline-block;
+     text-align: center;
+ }
+
+ .gnb :hover {
+     color: darkblue;
+ }
+ .gnb :active {
+     color: black;
+ }
+
+ a {
+     text-decoration: none;
+     color: black;
+ }
+
+ div.section {
+     border: 1px solid black;
+     margin: 3px;
+     padding: 10px;
+ }
+ a {
+     text-decoration: none;
+     color: darkgray;
+ }
+ .header img {margin-top: 4px;}
+
+ input[type=checkbox]:checked+div.checkbox{
+     height: 0px;
+ }
+ div.checkbox{
+     overflow: hidden;
+     -ms-transition-duration: 1s;
+     -webkit-transition-duration: 1s;
+     -moz-transition-duration: 1s;
+     -o-transition-duration: 1s;
+     transition-duration: 1s;
+ }
+
+ .checkbox>table{
+     font-size: 24px;
+     padding-left: 50px;
+     margin-left: 50px;
+     margin-top: -10px;
+     padding-bottom: 25px;
+     color: darkgray;
+ }
+ .checkbox td:hover{color: navy;}
+
+ div.ENFP_img{float: left; margin: 30px; padding-left: 150px;}
+ div.ENTP_img{float: left; margin: 30px; padding-left: 150px;}
+ div.ENTJ_img{float: left; margin: 30px; padding-left: 150px;}
+ div.ENFJ_img{float: left; margin: 30px; padding-left: 150px;}
+ div.ESFP_img{float: left; margin: 30px; padding-left: 150px;}
+ div.ESTP_img{float: left; margin: 30px; padding-left: 150px;}
+ div.ESFJ_img{float: left; margin: 30px; padding-left: 150px;}
+ div.ESTJ_img{float: left; margin: 30px; padding-left: 150px;}
+ div.INTP_img{float: left; margin: 30px; padding-left: 150px;}
+ div.INTJ_img{float: left; margin: 30px; padding-left: 150px;}
+ div.INFP_img{float: left; margin: 30px; padding-left: 150px;}
+ div.INFJ_img{float: left; margin: 30px; padding-left: 150px;}
+ div.ISFP_img{float: left; margin: 30px; padding-left: 150px;}
+ div.ISFJ_img{float: left; margin: 30px; padding-left: 150px;}
+ div.ISTP_img{float: left; margin: 30px; padding-left: 150px;}
+ div.ISTJ_img{float: left; margin: 30px; padding-left: 150px;}
+ .ENFP_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .ENTP_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .ENTJ_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .ENFJ_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .ESFP_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .ESTP_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .ESFJ_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .ESTJ_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .ENFP_img p > b {font-size: 40px;}
+ .ENTP_img p > b {font-size: 40px;}
+ .ENTJ_img p > b {font-size: 40px;}
+ .ENFJ_img p > b {font-size: 40px;}
+ .ESFP_img p > b {font-size: 40px;}
+ .ESTP_img p > b {font-size: 40px;}
+ .ESFJ_img p > b {font-size: 40px;}
+ .ESTJ_img p > b {font-size: 40px;}
+ .INTP_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .INTJ_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .INFP_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .INFJ_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .ISFP_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .ISTP_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .ISFJ_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .ISTJ_img p {font-size: 25px; margin: 0; line-height: 1.5;}
+ .INTP_img p > b {font-size: 40px;}
+ .INTJ_img p > b {font-size: 40px;}
+ .INFP_img p > b {font-size: 40px;}
+ .INFJ_img p > b {font-size: 40px;}
+ .ISFP_img p > b {font-size: 40px;}
+ .ISTP_img p > b {font-size: 40px;}
+ .ISFJ_img p > b {font-size: 40px;}
+ .ISTJ_img p > b {font-size: 40px;}
+  div.enfp_music{border: 1px solid black; float: left; width: 750px; height: 300px; margin-top: 100px; padding: 10px; overflow-y: scroll; margin-left: 80px;}
+ div.entp_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+ div.entj_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+ div.enfj_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+ div.esfp_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+ div.estp_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+ div.esfj_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+ div.estj_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+
+
+ div.intp_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+ div.intj_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+ div.infp_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+ div.infj_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+ div.isfp_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+ div.istp_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+ div.isfj_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+ div.istj_music{
+     border: 1px solid black; float: left;
+     width: 750px; height: 300px; margin-top: 100px; padding: 10px;
+     overflow-y: scroll; margin-left: 80px;}
+
+ div.enfp_music img {padding: 15px; margin: 15px;}
+ div.entp_music img {padding: 15px; margin: 15px;}
+ div.entj_music img {padding: 15px; margin: 15px;}
+ div.enfj_music img {padding: 15px; margin: 15px;}
+ div.esfp_music img {padding: 15px; margin: 15px;}
+ div.estp_music img {padding: 15px; margin: 15px;}
+ div.esfj_music img {padding: 15px; margin: 15px;}
+ div.estj_music img {padding: 15px; margin: 15px;}
+ div.intp_music img {padding: 15px; margin: 15px;}
+ div.infp_music img {padding: 15px; margin: 15px;}
+ div.intj_music img {padding: 15px; margin: 15px;}
+ div.infj_music img {padding: 15px; margin: 15px;}
+ div.isfp_music img {padding: 15px; margin: 15px;}
+ div.istp_music img {padding: 15px; margin: 15px;}
+ div.isfj_music img {padding: 15px; margin: 15px;}
+ div.istj_music img {padding: 15px; margin: 15px;}
+ div.ENFP_music_recommendation{display: inline block;}
+ div.ENTP_music_recommendation{display: inline block;}
+ div.ENTJ_music_recommendation{display: inline block;}
+ div.ENFJ_music_recommendation{display: inline block;}
+ div.ESFP_music_recommendation{display: inline block;}
+ div.ESTP_music_recommendation{display: inline block;}
+ div.ESFJ_music_recommendation{display: inline block;}
+ div.ESTJ_music_recommendation{display: inline block;}
+ div.INTP_music_recommendation{display: inline block;}
+ div.INFP_music_recommendation{display: inline block;}
+ div.INTJ_music_recommendation{display: inline block;}
+ div.INFJ_music_recommendation{display: inline block;}
+ div.ISFP_music_recommendation{display: inline block;}
+ div.ISTP_music_recommendation{display: inline block;}
+ div.ISFJ_music_recommendation{display: inline block;}
+ div.ISTJ_music_recommendation{display: inline block;}
+ div.enfp_music a{font-size: 15px; color: green;}
+ div.entp_music a{font-size: 15px; color: green;}
+ div.entj_music a{font-size: 15px; color: green;}
+ div.enfj_music a{font-size: 15px; color: green;}
+ div.esfp_music a{font-size: 15px; color: green;}
+ div.estp_music a{font-size: 15px; color: green;}
+ div.esfj_music a{font-size: 15px; color: green;}
+ div.estj_music a{font-size: 15px; color: green;}
+ div.enfp_music span{font-size: 10px; color: grey;}
+ div.entp_music span{font-size: 10px; color: grey;}
+ div.entj_music span{font-size: 10px; color: grey;}
+ div.enfj_music span{font-size: 10px; color: grey;}
+ div.esfp_music span{font-size: 10px; color: grey;}
+ div.estp_music span{font-size: 10px; color: grey;}
+ div.esfj_music span{font-size: 10px; color: grey;}
+ div.estj_music span{font-size: 10px; color: grey;}
+ div.enfp_music >b{color: black;}
+ div.entp_music >b{color: black;}
+ div.entj_music >b{color: black;}
+ div.enfj_music >b{color: black;}
+ div.esfp_music >b{color: black;}
+ div.estp_music >b{color: black;}
+ div.esfj_music >b{color: black;}
+ div.estj_music >b{color: black;}
+
+ div.enfp_music p {margin-left: 30px;}
+ div.entp_music p {margin-left: 30px;}
+ div.entj_music p {margin-left: 30px;}
+ div.enfj_music p {margin-left: 30px;}
+ div.esfp_music p {margin-left: 30px;}
+ div.estp_music p {margin-left: 30px;}
+ div.esfj_music p {margin-left: 30px;}
+ div.estj_music p {margin-left: 30px;}
+ div.intp_music a{font-size: 15px; color: green;}
+ div.intj_music a{font-size: 15px; color: green;}
+ div.infp_music a{font-size: 15px; color: green;}
+ div.infj_music a{font-size: 15px; color: green;}
+ div.isfp_music a{font-size: 15px; color: green;}
+ div.isfj_music a{font-size: 15px; color: green;}
+ div.istp_music a{font-size: 15px; color: green;}
+ div.istj_music a{font-size: 15px; color: green;}
+
+ div.intp_music span{font-size: 10px; color: grey;}
+ div.intj_music span{font-size: 10px; color: grey;}
+ div.infp_music span{font-size: 10px; color: grey;}
+ div.infj_music span{font-size: 10px; color: grey;}
+ div.isfp_music span{font-size: 10px; color: grey;}
+ div.isfj_music span{font-size: 10px; color: grey;}
+ div.istp_music span{font-size: 10px; color: grey;}
+ div.istj_music span{font-size: 10px; color: grey;}
+
+ div.intp_music >b{color: black;}
+ div.intj_music >b{color: black;}
+ div.infp_music >b{color: black;}
+ div.infj_music >b{color: black;}
+ div.isfp_music >b{color: black;}
+ div.isfj_music >b{color: black;}
+ div.istp_music >b{color: black;}
+ div.istj_music >b{color: black;}
+
+ div.intp_music p {margin-left: 30px;}
+ div.intj_music p {margin-left: 30px;}
+ div.infp_music p {margin-left: 30px;}
+ div.infj_music p {margin-left: 30px;}
+ div.isfp_music p {margin-left: 30px;}
+ div.isfj_music p {margin-left: 30px;}
+ div.istp_music p {margin-left: 30px;}
+ div.istj_music p {margin-left: 30px;}
+
+ input[type=checkbox] {margin-top: 25px; margin-left: 30px; width: 18px; height: 18px; display: inline;}
+
+ .enfp-mv {padding-left: 30px;}
+ .enfp-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+
+ .entp-mv {padding-left: 30px;}
+ .entp-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+ 
+ .entj-mv {padding-left: 30px;}
+ .entj-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+
+ .enfj-mv {padding-left: 30px;}
+ .enfj-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+
+ .esfp-mv {padding-left: 30px;}
+ .esfp-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+
+ .estp-mv {padding-left: 30px;}
+ .estp-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+
+ .esfj-mv {padding-left: 30px;}
+ .esfj-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+
+ .estj-mv {padding-left: 30px;}
+ .estj-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+ .intp-mv {padding-left: 30px;}
+ .intp-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+
+ .intj-mv {padding-left: 30px;}
+ .intj-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+ 
+ .infp-mv {padding-left: 30px;}
+ .infp-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+
+ .infj-mv {padding-left: 30px;}
+ .infj-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+
+ .isfp-mv {padding-left: 30px;}
+ .isfp-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+
+ .isfj-mv {padding-left: 30px;}
+ .isfj-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+
+ .istp-mv {padding-left: 30px;}
+ .istp-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+
+ .istj-mv {padding-left: 30px;}
+ .istj-mv p {font-size: 20px; color: navy; padding-right: 20px;}
+ div#ENFP{overflow: hidden;}
+ div#ENTP{overflow: hidden;}
+ div#ENTJ{overflow: hidden;}
+ div#ENFJ{overflow: hidden;}
+ div#ESFP{overflow: hidden;}
+ div#ESTP{overflow: hidden;}
+ div#ESFJ{overflow: hidden;}
+ div#ESTJ{overflow: hidden;}
+ div#INTP{overflow: hidden;}
+ div#INTJ{overflow: hidden;}
+ div#ISTP{overflow: hidden;}
+ div#ISTJ{overflow: hidden;}
+ div#ISFP{overflow: hidden;}
+ div#ISFJ{overflow: hidden;}
+ div#INFP{overflow: hidden;}
+ div#INFJ{overflow: hidden;}
+</style>
+<body>
+    <div class="header">
+        <h1>RECOMMENDATIONS BY <b>MBTI</b> TYPE</h1>
+        <form action="https://search.naver.com/search.naver" style="margin-left: auto;">
+            <div class="search">
+                <input type="text" name="query" value="">
+                <button type="submit">⌕</button>
+            </div>
+        </form>
+        &nbsp;&nbsp;&nbsp;
+        <a href="https://wulwu.github.io/qnaafter/">
+            <img src="https://cdn-icons-png.flaticon.com/512/2608/2608207.png" alt="Q&A" width="30"></a>
+        &nbsp;&nbsp;
+    </div>
+
+    <br>
+    <hr>
+    <div class="container">
+        <ul class="gnb">
+            <a href="https://wulwu.github.io/mbtibuttonpage/">MBTI</a></ul>
+        <ul class="gnb">
+            <a href="https://google.com">BOOK</a></ul>
+        <ul class="gnb">
+            <a href="https://naver.com">MUSIC</a></ul>
+        <ul class="gnb">
+            <a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC">TEST</a></ul>
+    </div>
+    <hr>
+
+    <input type="checkbox"/>
+    <div class="checkbox">
+        <table>
+            <tr>
+                <td><a href="#ENTP">ENTP</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href="#ENTJ">ENTJ</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href="#ENFP">ENFP</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href="#ENFJ">ENFJ</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href="#ESTP">ESTP</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href="#ESTJ">ESTJ</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href="#ESFP">ESFP</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href="#ESFJ">ESFJ</a></td>
+            </tr>
+            <tr>
+                <td><a href='#INTP'>INTP</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href='#INTJ'>INTJ</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href='#INFP'>INFP</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href='#INFJ'>INFJ</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href='#ISTP'>ISTP</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href='#ISTJ'>ISTJ</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href='#ISFP'>ISFP</a></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><a href='#ISFJ'>ISFJ</a></td>
+            </tr>
+        </table>
+        <hr>
+    </div>
+
+
+    <div id="ENFP">
+    <div class="ENFP_music_recommendation">
+        <div class="ENFP_img">
+            <p><b>활동가</b></p>
+            <p>성격유형: ENFP</p><br><br>
+            <img src="https://www.16personalities.com/static/images/personality-types/avatars/enfp-campaigner.png" width="300px" height="300px">
+        </div>
+    
+
+        <div class="enfp_music">
+            <table>
+                <tr>
+                    <td><a href="https://www.melon.com/song/detail.htm?songId=37524037">
+                        <img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.namu.wiki%2Fi%2FhlkvneJwbj6ZySXGMSD-NIWSw9YiSP051Xs6GQ1MfgJAZAM9hCffc8YmCE7RXjBVb3BwioK2BxZpDmkLeVwI0g.webp&type=sc960_832" width="220px" height="220px"></a></td>
+
+                    <td><a href="https://www.melon.com/song/detail.htm?songId=30672385">
+                        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNzEwMTZfMjMz%2FMDAxNTA4MTQ3NDU2ODcw.3yVSvqgZSMPqvVlvUx44xSfw2RFxeZa-M48aHqU-SEkg.vcrXnEdYcQJ_9sIkujYt5_YAOp0lOgbg9l92ycdlZQwg.JPEG.ps_kangc%2F1508147454207.jpg&type=sc960_832" width="220px" height="220px"></a></td>
+                    
+                    <td>
+                        <p><span>[정규]</span><br>
+                            <b>MOVE</b> <br>
+                            <a>태민 (TAEMIN)</a> </p>
+                        <br>
+                        <p><span>[정규]</span><br>
+                            <b>Supernova</b> <br>
+                            <a>aespa</a> </p>
+                    </td>
+                </tr><br>
+            </table><br>
+            <div>
+                <p>
+                    앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                    <br>
+                    뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                </p><br><br>
+            </div>
+        <div class="enfp-mv">
+            <p><b>[MV 미리보기]</b></p><br><br>
+                <iframe width="500" height="260" src="https://www.youtube.com/embed/phuiiNCxRMg?si=FYkRGTKU1P2YrqSx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <br><br>
+                <iframe width="500" height="260" src="https://www.youtube.com/embed/rcEyUNeZqmY?si=YAbtzAlrhHh0I8lG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div></div><br><br>
+    </div>
+    </div><br><br><br><br><br><br>   
+    
+
+    
+       
+
+    <div id="ENTP">
+    <div class="ENTP_music_recommendation">
+        <div class="ENTP_img">
+            <p><b>변론가</b></p>
+            <p>성격유형: ENTP</p><br><br>
+            <img src="https://www.16personalities.com/static/images/personality-types/avatars/entp-debater.png" width="300px" height="300px">
+        </div>
+    
+        <div class="entp_music">
+            <table>
+                <tr>
+                    <td>
+                        
+                        <a href="https://www.melon.com/song/detail.htm?songId=34041584#">
+                        <img src="https://cdnimg.melon.co.kr/cm2/album/images/107/31/792/10731792_20211005145407_1000.jpg?4c73162344cb33279b6e70bc45f6f559/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+    
+                    <td><a href="https://www.melon.com/song/detail.htm?songId=32399831">
+                        <img src="https://cdnimg.melon.co.kr/cm2/album/images/103/77/346/10377346_20200221153622_1000.jpg?83be62273cc86af9dea0468302203f11/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                        
+                    <td>
+                        <p><span>[미니]</span><br>
+                            <b>SAVAGE</b> <br>
+                            <a>aespa</a> </p>
+                        <br>
+                        <p><span>[정규]</span><br>
+                            <b>욱 (UGH!)</b> <br>
+                            <a>BTS (방탄소년단)</a> </p>
+                    </td>
+                </tr><br>
+                
+                </table><br>
+                <div>
+                    <p>
+                        앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                        <br>
+                        뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                    </p><br><br>
+                </div>
+        <div class="entp-mv">
+                <p><b>[MV 미리보기]</b></p><br><br>
+                <iframe width="500" height="260" src="https://www.youtube.com/embed/WPdWvnAAurg" title="aespa 에스파 &#39;Savage&#39; MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <br><br>
+                    <iframe width="500" height="260" src="https://www.youtube.com/embed/1yxEmmYQdl8?si=99fuXLVvsA-xu_jo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div><br><br>
+        </div>
+    </div>
+    </div><br><br><br><br><br><br>   
+      
+
+    <div id="ENTJ">
+        <div class="ENTJ_music_recommendation">
+            <div class="ENTJ_img">
+                <p><b>통솔자</b></p>
+                <p>성격유형: ENTJ</p><br><br>
+                <img src="https://www.16personalities.com/static/images/personality-types/avatars/entj-commander.svg" width="300px" height="300px">
+            </div>
+        
+            <div class="entj_music">
+                <table>
+                    <tr>
+                        <td><a href="https://www.melon.com/song/detail.htm?songId=31012145">
+                            <img src="https://cdnimg.melon.co.kr/cm/album/images/101/57/093/10157093_1000.jpg?e3cd40441f2cae545ecbae508ea93e46/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+        
+                        <td><a href="https://www.melon.com/song/detail.htm?songId=33940933">
+                            <img src="https://cdnimg.melon.co.kr/cm2/album/images/107/10/695/10710695_20210910105303_1000.jpg?20ee344fec4388d4bfab39b7f18c0f4b/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                            
+                        <td>
+                            <p><span>[정규]</span><br>
+                                <b>Bad</b> <br>
+                                <a>Christopher</a> </p>
+                            <br>
+                            <p><span>[싱글]</span><br>
+                                <b>Money</b> <br>
+                                <a>리사(Lisa)</a> </p>
+                        </td>
+                    </tr><br>
+                    </table><br>
+                    <div>
+                        <p>
+                            앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                            <br>
+                            뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                        </p><br><br>
+                    </div>
+                <div class="entj-mv">
+                        <p><b>[MV 미리보기]</b></p><br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/T6tTohWiu5A?si=_9PJCiOrl0Nm1crt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/dNCWe_6HAM8?si=OLwWVvx_ninvsS3V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                </div><br><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br>   
+
+
+
+    <div id="ENFJ">
+        <div class="ENFJ_music_recommendation">
+            <div class="ENFJ_img">
+                <p><b>선도자</b></p>
+                <p>성격유형: ENFJ</p><br><br>
+                    <img src="https://www.16personalities.com/static/images/personality-types/avatars/enfj-protagonist.png" width="300px" height="300px">
+            </div>
+            
+            <div class="enfj_music">
+                <table>
+                    <tr>
+                        <td><a href="https://www.melon.com/song/detail.htm?songId=8048711">
+                            <img src="https://cdnimg.melon.co.kr/cm/album/images/026/66/420/2666420_1000.jpg/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+            
+                        <td><a href="https://www.melon.com/song/detail.htm?songId=33061995">
+                            <img src="https://cdnimg.melon.co.kr/cm2/album/images/105/18/234/10518234_20210216102853_1000.jpg?90c7ebe3f247793b408e1e8c00ad061d/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                
+                        <td>
+                            <p><span>[OST]</span><br>
+                            <b>Try Everything</b> <br>
+                            <a>Shakira</a> </p>
+                            <br>
+                            <p><span>[싱글]</span><br>
+                                <b>밤하늘의 별을</b> <br>
+                                <a>경서</a> </p>
+                        </td>
+                    </tr><br>
+                </table><br>
+                <div>
+                    <p>
+                        앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                        <br>
+                        뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                    </p><br><br>
+                </div>
+            <div class="enfj-mv">
+                <p><b>[MV 미리보기]</b></p><br><br>
+                    <iframe width="500" height="260" src="https://www.youtube.com/embed/HHQXdILvsPE?si=69I_KzzjP7NyHR6m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <br><br>
+                    <iframe width="500" height="260" src="https://www.youtube.com/embed/NuTNPV72rFo?si=hESTdOuyyUKkTX8e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div><br><br>
+            </div>
+            </div>
+        </div><br><br><br><br><br><br>
+
+
+
+        <div id="ESFP">
+            <div class="ESFP_music_recommendation">
+                <div class="ESFP_img">
+                    <p><b>연예인</b></p>
+                    <p>성격유형: ESFP</p><br><br>
+                        <img src="https://www.16personalities.com/static/images/personality-types/avatars/esfp-entertainer.png" width="300px" height="300px">
+                </div>
+                
+                <div class="esfp_music">
+                    <table>
+                        <tr>
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=32142707">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/103/46/452/10346452_1000.jpg?ca77a177b13c06e2b44951271e0e8f56" width="220px" height="220px"></a></td>
+                
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=30962526">
+                                <img src="https://cdnimg.melon.co.kr/cm/album/images/101/49/492/10149492_1000.jpg?fa24fa8eabdd1e9e13759225831e2eec/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                    
+                            <td>
+                                <p><span>[싱글]</span><br>
+                                <b>Checklist</b> <br>
+                                <a>MAX</a> </p>
+                                <br>
+                                <p><span>[OST]</span><br>
+                                <b>모든 날, 모든 순간</b> <br>
+                                <a>폴킴</a> </p>
+                            </td>
+                        </tr><br>
+                    </table><br>
+                    <div>
+                        <p>
+                            앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                            <br>
+                            뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                        </p><br><br>
+                    </div>
+                <div class="esfp-mv">
+                    <p><b>[MV 미리보기]</b></p><br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/g5WaJyEPP5g?si=r0w_LHFvDQsC-odu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/EXV8TwTo0A0?si=ey6cj2uiDfbM_f67" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div><br><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br>
+
+
+        <div id="ESTP">
+            <div class="ESTP_music_recommendation">
+                <div class="ESTP_img">
+                    <p><b>사업가</b></p>
+                    <p>성격유형: ESTP</p><br><br>
+                        <img src="https://www.16personalities.com/static/images/personality-types/avatars/estp-entrepreneur.png" width="300px" height="300px">
+                </div>
+                    
+                <div class="estp_music">
+                    <table>
+                        <tr>
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=34349913">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/107/98/794/10798794_20211201113915_1000.jpg?4b89cd385817f7519af259b2c32170f0/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                    
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=32681306">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/104/44/798/10444798_20200615163827_1000.jpg?a62e12c72b53e357934ce2be8a60055a/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                        
+                            <td>
+                                <p><span>[싱글]</span><br>
+                                <b>ELEVEN</b> <br>
+                                <a>IVE</a> </p>
+                                <br>
+                                <p><span>[EP]</span><br>
+                                <b>환상동화(Secret Story of the Swan)</b> <br>
+                                <a>IZ*ONE (아이즈원)</a> </p>
+                            </td>
+                        </tr><br>
+                    </table><br>
+                    <div>
+                        <p>
+                            앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                            <br>
+                            뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                        </p><br><br>
+                    </div>
+                <div class="estp-mv">
+                    <p><b>[MV 미리보기]</b></p><br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/--FmExEAsM8?si=VbzBqiHMfvwpBcrO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/nnVjsos40qk?si=HaUGfBZqHxEdFHUh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div><br><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br>
+        
+        <div id="ESFJ">
+            <div class="ESFJ_music_recommendation">
+                <div class="ESFJ_img">
+                    <p><b>집정관</b></p>
+                    <p>성격유형: ESFJ</p><br><br>
+                        <img src="https://www.16personalities.com/static/images/personality-types/avatars/esfj-consul.png" width="300px" height="300px">
+                </div>
+                        
+                <div class="esfj_music">
+                    <table>
+                        <tr>
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=32602999">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/104/31/658/10431658_20200518140907_1000.jpg?6ddc272ed34a871c338c81cb7ae2e91b/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                        
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=33594897">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/106/32/044/10632044_20210618114846_1000.jpg?858914cf9e301c8f870ce028fe6c0eb3/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                            
+                            <td>
+                                <p><span>[싱글]</span><br>
+                                <b>오늘보다 내일의 너를 더 좋아하겠지</b> <br>
+                                <a>소각소각</a> </p>
+                                <br>
+                                <p><span>[미니]</span><br>
+                                <b>Ready to Love</b> <br>
+                                <a>세븐틴 (SEVENTEEN)</a> </p>
+                            </td>
+                        </tr><br>
+                    </table><br>
+                    <div>
+                        <p>
+                            앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                            <br>
+                            뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                        </p><br><br>
+                    </div>
+                <div class="esfj-mv">
+                    <p><b>[MV 미리보기]</b></p><br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/sCRjuftvxMc?si=wNJ1uN0nruSBhX2A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/yCvSR4lSqTg?si=XHreK86m9AVa8Aq7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div><br><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br>
+
+
+        <div id="ESTJ">
+            <div class="ESTJ_music_recommendation">
+                <div class="ESTJ_img">
+                    <p><b>경영자</b></p>
+                    <p>성격유형: ESTJ</p><br><br>
+                        <img src="https://www.16personalities.com/static/images/personality-types/avatars/estj-executive.png" width="300px" height="300px">
+                </div>
+                            
+                <div class="estj_music">
+                    <table>
+                        <tr>
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=7886817">
+                                <img src="https://cdnimg.melon.co.kr/cm/album/images/026/45/152/2645152_1000.jpg/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                            
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=32345931">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/103/81/712/10381712_20200131110358_1000.jpg?336dfd739d81da76bc98410f2ddc1069/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                                
+                            <td>
+                                <p><span>[정규]</span><br>
+                                <b>Warriors</b> <br>
+                                <a>Imagine Dragons</a> </p>
+                                <br>
+                                <p><span>[OST]</span><br>
+                                <b>시작</b> <br>
+                                <a>가호</a> </p>
+                            </td>
+                        </tr><br>
+                    </table><br>
+                    <div>
+                        <p>
+                            앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                            <br>
+                            뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                        </p><br><br>
+                    </div>
+                <div class="estj-mv">
+                    <p><b>[MV 미리보기]</b></p><br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/wllpa2JBEmA?si=Zz-Iki8neV5cLiZM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/6LDg0YGYVw4?si=WwnkZuHhhf_7rUX7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div><br><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br>
+
+
+
+                            
+        <div id="INTP">
+            <div class="INTP_music_recommendation">
+                <div class="INTP_img">
+                    <p><b>논리술사</b></p>
+                    <p>성격유형: INTP</p><br><br>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlOUv5i5v8mqz19m7xV7ZD5WPwT3wm3SgV-lmatt4Y-w&s" width="300px" height="300px">
+                </div>
+                                
+                <div class="intp_music">
+                    <table>
+                        <tr>
+                            <td>
+                                <a href="https://www.melon.com/song/detail.htm?songId=36778868">
+                                    <img src="https://cdnimg.melon.co.kr/cm2/album/images/113/23/044/11323044_20230918120653_1000.jpg?96485815b31c83574ba34db820882316/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                
+                            <td>
+                                <a href="https://www.melon.com/song/detail.htm?songId=37390939">
+                                    <img src="https://cdnimg.melon.co.kr/cm2/album/images/114/59/325/11459325_20240405171054_1000.jpg?d0a5cf78d5ff0fd792ede55996016f66/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                                    
+                            <td>
+                                <p><span>[EP]</span><br>
+                                <b>기적</b> <br>
+                                <a>도경수 (D.O.)</a> </p>
+                                <br>
+                                <p><span>[OST]</span><br>
+                                <b>소나기</b> <br>
+                                <a>이클립스 (ECLIPSE)</a> </p>
+                            </td>
+                        </tr><br>
+                    </table><br>
+                    <div>
+                        <p>
+                            앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                            <br>
+                            뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                        </p><br><br>
+                    </div>
+                <div class="intp-mv">
+                    <p><b>[MV 미리보기]</b></p><br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/1cp6Oq1Zm34?si=yepkSN3looXX82Ol" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/DpKI0zDPqRQ?si=4J55dIfChL_mYU2F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div><br><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br>
+
+        <div id="INTJ">
+            <div class="INTJ_music_recommendation">
+                <div class="INTJ_img">
+                    <p><b>전략가</b></p>
+                    <p>성격유형: INTJ</p><br><br>
+                        <img src="https://i.pinimg.com/474x/e7/28/69/e72869626473f682498fa78c0e317195.jpg" width="300px" height="300px">
+                </div>
+                                    
+                <div class="intj_music">
+                    <table>
+                        <tr>
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=37463420">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/114/56/179/11456179_20240429095734_1000.jpg?YUV444-90" width="220px" height="220px"></a></td>
+                                    
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=35640751">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/108/44/485/10844485_20221006154824_1000.jpg?b752b5ed8fad66b79e2705840630dd94/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                                        
+                            <td>
+                                <p><span>[싱글]</span><br>
+                                <b>Honestly</b> <br>
+                                <a>RIIZE</a> </p>
+                                <br>
+                                <p><span>[정규]</span><br>
+                                <b>I Don't Think That I Like Her</b> <br>
+                                <a>Charlie Puth</a> </p>
+                            </td>
+                        </tr><br>
+                    </table><br>
+                    <div>
+                        <p>
+                            앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                            <br>
+                            뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                        </p><br><br>
+                    </div>   
+                <div class="intj-mv">
+                    <p><b>[MV 미리보기]</b></p><br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/mH7xjaEA-94?si=RRcjORR8RXYr-DFg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/wSgUvHKAM4I?si=d9hmVl2C9VIllxvN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div><br><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br>
+
+        <div id="INFP">
+            <div class="INFP_music_recommendation">
+                <div class="INFP_img">
+                    <p><b>중재자</b></p>
+                    <p>성격유형: INFP</p><br><br>
+                        <img src="https://www.16personalities.com/static/images/personality-types/avatars/infp-mediator.svg?v=3" width="300px" height="300px">
+                </div>
+                                        
+                <div class="infp_music">
+                    <table>
+                        <tr>
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=36713850">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/113/09/190/11309190_20230818161008_1000.jpg?93148adc9d3b5622f4c4dca1e429650e/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                        
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=37344905">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/114/49/278/11449278_20240322170237_1000.jpg?4419129e6b95fac2cb5bf541b8528a78/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                                            
+                            <td>
+                                <p><span>[싱글]</span><br>
+                                <b>후라이의 꿈</b> <br>
+                                <a>AKMU (악뮤)</a> </p>
+                                <br>
+                                <p><span>[OST]</span><br>
+                                <b>미안해 미워해 사랑해</b> <br>
+                                <a>Crush</a> </p>
+                            </td>
+                        </tr><br>
+                    </table><br>
+                    <div>
+                        <p>
+                            앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                            <br>
+                            뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                        </p><br><br>
+                    </div>   
+                <div class="infp-mv">
+                    <p><b>[MV 미리보기]</b></p><br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/3kGAlp_PNUg?si=6aIFk94kWozI56qJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/Z4qVfCi_lUI?si=zXKYILFgpSf189NW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div><br><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br>
+
+        <div id="INFJ">
+            <div class="INFJ_music_recommendation">
+                <div class="INFJ_img">
+                    <p><b>옹호자</b></p>
+                    <p>성격유형: INFJ</p><br><br>
+                        <img src="https://www.16personalities.com/static/images/personality-types/avatars/infj-advocate.png" width="300px" height="300px">
+                </div>
+                                            
+                <div class="infj_music">
+                    <table>
+                        <tr>
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=32077713">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/103/35/111/10335111_20210817103453_1000.jpg?659ae2c4537f99e161a3ed63c2dfaa46/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                            
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=37064763">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/113/85/577/11385577_20231215144114_1000.jpg?334277f4d0298fc93158ec4de0486877/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                                                
+                            <td>
+                                <p><span>[정규]</span><br>
+                                <b>10,000 Hours</b> <br>
+                                <a>Dan + Shay, Justin Bieber</a> </p>
+                                <br>
+                                <p><span>[OST]</span><br>
+                                <b>꿈</b> <br>
+                                <a>태연 (TAEYEON)</a> </p>
+                            </td>
+                        </tr><br>
+                    </table><br>
+                    <div>
+                        <p>
+                            앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                            <br>
+                            뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                        </p><br><br>
+                    </div>
+                <div class="infj-mv">
+                    <p><b>[MV 미리보기]</b></p><br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/I50KgSppl4k?si=372Z5Rde2-7Yjqz4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/dMaU3Mj7EVY?si=ARtBMWfFE7aT-beJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div><br><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br>
+
+        <div id="ISFP">
+            <div class="ISFP_music_recommendation">
+                <div class="ISFP_img">
+                    <p><b>모험가</b></p>
+                    <p>성격유형: ISFP</p><br><br>
+                        <img src="https://www.16personalities.com/static/images/personality-types/avatars/isfp-adventurer.svg" width="300px" height="300px">
+                </div>
+                                                
+                <div class="isfp_music">
+                    <table>
+                        <tr>
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=36599950">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/112/81/456/11281456_20230706180841_1000.jpg?adcd1e7bd5800378cd55ef3b7b5ffb8f/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                                
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=35562361">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/110/38/523/11038523_20220826132328_1000.jpg?5f0cce50eb7f42cf27ab949e528b2c2d/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                                                   
+                            <td>
+                                <p><span>[EP]</span><br>
+                                <b>Super Shy</b> <br>
+                                <a>NewJeans</a> </p>
+                                <br>
+                                <p><span>[싱글]</span><br>
+                                <b>Hold You One Last Time (Feat. Le June)</b> <br>
+                                <a>Mindme</a> </p>
+                            </td>
+                        </tr><br>
+                    </table><br>
+                    <div>
+                        <p>
+                            앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                            <br>
+                            뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                        </p><br><br>
+                    </div>                   
+                <div class="isfp-mv">
+                    <p><b>[MV 미리보기]</b></p><br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/ArmDp-zijuc?si=V9yRWmzAtNJuAUeG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/FtvlAqtPNvQ?si=56wHlp8zAhE6yjKc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div><br><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br>
+
+        <div id="ISFJ">
+            <div class="ISFJ_music_recommendation">
+                <div class="ISFJ_img">
+                    <p><b>수호자</b></p>
+                    <p>성격유형: ISFJ</p><br><br>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9G-QKWCUKPJnzw9IMKZhi87bYKtN0Cd8lePRJcaxEew&s" width="300px" height="300px">
+                </div>
+                                                    
+                <div class="isfj_music">
+                    <table>
+                        <tr>
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=37436295">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/114/69/495/11469495_20240419182508_1000.jpg?34b7c978fb2c306d34e1c00aa391376f/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                                    
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=3820695">
+                                <img src="https://cdnimg.melon.co.kr/cm/album/images/021/26/130/2126130_1000.jpg/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                                                        
+                            <td>
+                                <p><span>[정규]</span><br>
+                                <b>반딧불 (Little Light)</b> <br>
+                                <a>도영 (DOYOUNG)</a> </p>
+                                <br>
+                                <p><span>[싱글]</span><br>
+                                <b>굿모닝 (Feat. 권정열 Of 10cm)</b> <br>
+                                <a>버벌진트</a> </p>
+                            </td>
+                        </tr><br>
+                    </table><br>
+                    <div>
+                        <p>
+                            앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                            <br>
+                            뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                        </p><br><br>
+                    </div>                     
+                <div class="isfj-mv">
+                    <p><b>[MV 미리보기]</b></p><br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/UZjGcAjd8Ok?si=a0b_ME2VZc791E8R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/DhicR0sOISs?si=9ZEPzTcs5ABcouAY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div><br><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br>
+
+        <div id="ISTP">
+            <div class="ISTP_music_recommendation">
+                <div class="ISTP_img">
+                    <p><b>장인</b></p>
+                    <p>성격유형: ISTP</p><br><br>
+                        <img src="https://www.16personalities.com/static/images/personality-types/avatars/istp-virtuoso.png" width="300px" height="300px">
+                </div>
+                                                        
+                <div class="istp_music">
+                    <table>
+                        <tr>
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=37563682">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/114/75/749/11475749_20240524105642_1000.jpg?47e687cfd75faa4adfe7b2c11f0e2eef/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                                        
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=31927275">
+                                <img src="https://cdnimg.melon.co.kr/cm/album/images/103/07/346/10307346_1000.jpg?84c9c2f6f52301ab6327b78cf41efe82/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                                                            
+                            <td>
+                                <p><span>[싱글]</span><br>
+                                <b>How Sweet</b> <br>
+                                <a>NewJeans</a> </p>
+                                <br>
+                                <p><span>[EP]</span><br>
+                                <b>한 페이지가 될 수 있게</b> <br>
+                                <a>DAY6 (데이식스)</a> </p>
+                            </td>
+                        </tr><br>
+                    </table><br>
+                    <div>
+                        <p>
+                            앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                            <br>
+                            뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                        </p><br><br>
+                    </div>                   
+                <div class="istp-mv">
+                    <p><b>[MV 미리보기]</b></p><br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/Q3K0TOvTOno?si=hU3f4EL884KR4Hch" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/vnS_jn2uibs?si=TsS0vGcN9kZEpeda" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div><br><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br>
+
+        <div id="ISTJ">
+            <div class="ISTJ_music_recommendation">
+                <div class="ISTJ_img">
+                <p><b>현실주의자</b></p>
+                <p>성격유형: ISTJ</p><br><br>
+                    <img src="https://www.16personalities.com/static/images/personality-types/avatars/istj-logistician.png" width="300px" height="300px">
+            </div>
+                                                            
+                <div class="istj_music">
+                    <table>
+                        <tr>
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=36546894">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/112/68/653/11268653_20230717145416_1000.jpg?0f4602916c193618da0c3afc99cb159a/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                                            
+                            <td><a href="https://www.melon.com/song/detail.htm?songId=37138469">
+                                <img src="https://cdnimg.melon.co.kr/cm2/album/images/114/02/655/11402655_20240129121016_1000.jpg?c78f36957ea2f748def29fe988f9518c/melon/quality/80/optimize" width="220px" height="220px"></a></td>
+                                                                                
+                            <td>
+                                <p><span>[정규]</span><br>
+                                <b>ISTJ</b> <br>
+                                <a>NCT DREAM</a> </p>
+                                <br>
+                                <p><span>[정규]</span><br>
+                                <b>나는 아픈 건 딱 질색이니까</b> <br>
+                                <a>(여자)아이들</a> </p>
+                            </td>
+                        </tr><br>
+                    </table><br>
+                    <div>
+                        <p>
+                            앨범 커버 사진을 누르면 곡의 상세 정보를 확인할 수 있습니다.
+                            <br>
+                            뮤직비디오 재생이 되지 않는다면 <b>'Youtube에서 보기'</b>를 눌러 주세요.
+                        </p><br><br>
+                    </div>                         
+                <div class="istj-mv">
+                    <p><b>[MV 미리보기]</b></p><br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/XDnGdcgd3Pc?si=OIyMTCWQqTw93r0a" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <br><br>
+                        <iframe width="500" height="260" src="https://www.youtube.com/embed/ATK7gAaZTOM?si=c8ck4umysdsTsIEj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div><br><br>
+                </div>
+            </div>
+        </div><br><br><br><br><br><br>
+</body>
+</html>
